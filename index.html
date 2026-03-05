@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kürzungen bei Bus & Bahn gemeinsam stoppen!</title>
+  <link rel="shortcut icon" href="https://gruenedresden.de/typo3conf/ext/startgreen/Resources/Public/Css/buendnis-90-die-gruenen.ico" type="image/vnd.microsoft.icon">
+  <link rel="stylesheet" type="text/css" href="https://netzbegruenung.github.io/webfonts/style.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #000000;
+      --cream: #F5F1E9;
+      --green: #008939;
+      --pink: #E6007E;
+      --yellow: #FFF17A;
+      --blue: #0BA1DD;
+      --lime: #8ABD24;
+      --dark-green: #005538;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: #C2FFAB;
+      background-image:
+        radial-gradient(ellipse at 20% 10%, rgba(0,85,56,0.6) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 90%, rgba(0,85,56,0.5) 0%, transparent 50%);
+      font-family: 'PT Sans', sans-serif;
+      color: var(--black);
+      min-height: 100vh;
+      padding: 0rem 1rem 1rem;
+    }
+
+    a {
+      all: unset;
+      color: var(--blue);
+      cursor: pointer;
+    }
+
+    ul, ol {
+      display: block;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      padding-inline-start: 40px;
+    }
+
+    html {
+      padding-bottom: 80vh;
+    }
+        
+
+    /* ── Content box ── */
+    .container {
+      max-width: 770px;
+      margin: 0 auto;
+      background: var(--cream);
+      overflow: hidden;
+      box-shadow: 8px 8px 0 #004931;
+    }
+
+    /* ── Header ── */
+    .site-header {
+      background: var(--dark-green);
+      color: var(--cream);
+      padding: 0rem 2.5rem 0rem; 
+      position: relative;
+      overflow: visible;
+      text-align: center;
+    }
+
+    .heading h1 {
+      font-family: 'GrueneType Neue', sans-serif;
+      font-size: clamp(2rem, 6vw, 3rem);
+      line-height: 1.1;
+      color: var(--cream);
+    }
+
+    .heading {
+      background-color: var(--green);
+      padding: 1rem;
+      transform: skew(-12deg);
+      position: relative;
+      top: 1.3rem; 
+    }
+
+    .heading > * {
+      transform: skew(12deg);
+    }
+
+    /* ── Nav buttons ── */
+    .nav-intro {
+      padding-top: 1em;
+      text-align: center;
+      font-family:'GrueneType Neue', sans-serif;
+      font-size: 1.3rem;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      padding: 1.5rem 2.5rem;
+      background: var(--cream);
+      border-bottom: 2px solid rgba(0,0,0,0.1);
+    }
+
+    .nav-btn {
+      flex: 1 1 140px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.65rem 1.1rem;
+      background: var(--pink);
+      color: var(--cream);
+      font-family: 'PT Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border: 2px solid var(--pink);
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s, transform 0.12s;
+      white-space: nowrap;
+    }
+    .nav-btn:hover {
+      background: var(--pink);
+      border-color: var(--pink);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    .nav-btn:active { transform: translateY(0); }
+
+    .nav-btn .icon {
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    /* ── Sections ── */
+    .section {
+      padding: 2.5rem 2.5rem 2rem;
+      border-bottom: 2px solid rgba(0,0,0,0.1);
+    }
+    .section:last-child { border-bottom: none; }
+
+    .section h2 {
+      font-family: 'GrueneType Neue', sans-serif;
+      font-size: clamp(1.4rem, 4vw, 1.9rem);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: var(--black);
+    }
+
+    .section p {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: #1a1a1a;
+      margin-bottom: 0.85rem;
+    }
+    .section p:last-child { margin-bottom: 0; }
+
+    .highlight-bar {
+      display: inline;
+      background: var(--yellow);
+      padding: 0 3px;
+    }
+
+    /* ── Pull quote ── */
+    .pull-quote {
+      margin: 1.5rem 0;
+      padding: 1rem 1.25rem;
+      border-left: 4px solid var(--pink);
+      background: rgba(230,0,126,0.06);
+      font-family: 'GrueneType Neue', sans-serif;
+      font-size: 1.05rem;
+      font-style: normal;
+      line-height: 1.5;
+      color: var(--dark-green);
+    }
+
+    /* ── FAQ ── */
+    #faq .section-label { color: var(--pink); }
+    #faq h2 { color: var(--black); }
+
+    .faq-list { margin-top: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; }
+
+    .faq-item {
+      border: 2px solid var(--black);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.9rem 1.1rem;
+      background: var(--cream);
+      font-family: 'PT Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--black);
+      border: none;
+      text-align: left;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .faq-question:hover { background: var(--yellow); }
+    .faq-question[aria-expanded="true"] {
+      background: var(--black);
+      color: var(--cream);
+    }
+
+    .faq-icon {
+      flex-shrink: 0;
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      border: 2px solid currentColor;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      line-height: 1;
+      transition: transform 0.25s;
+    }
+    .faq-question[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1), padding 0.25s;
+      background: #fff;
+      padding: 0 1.1rem;
+    }
+    .faq-answer.open {
+      padding: 1rem 1.1rem;
+      max-height: none;
+    }
+    .faq-answer p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #1a1a1a;
+    }
+
+    /* ── Footer ── */
+    .site-footer {
+      text-align: center;
+      padding: 1.2rem;
+      background: var(--black);
+      color: rgba(245,241,233,0.6);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+    }
+    .site-footer span { color: var(--yellow); }
+
+    /* ── Responsive ── */
+    @media (max-width: 480px) {
+      body { padding: 1rem 0.75rem 3rem; }
+      .site-header, .nav, .section { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .nav-btn { flex-basis: 100%; }
+    }
+
+    /* ── Footnotes ── */
+    .faq-footnotes {
+        border-top: 1px solid rgba(0,0,0,0.2);
+        font-size: 0.78rem;
+        line-height: 1.6;
+        color: #444;
+      }
+      .faq-footnotes ol {
+        padding-left: 1.25rem;
+      }
+      .faq-footnotes a { color: var(--green); }
+  
+      
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="heading"><h1>Kürzungen gemeinsam stoppen!</h1></div>
+  </header>
+
+  <section class="section">
+
+    <p>Die Fahrgastzahlen der DVB steigen stetig – zugleich wurde das Angebot in den letzten Jahren kaum ausgebaut. CDU, Team Zastrow und AfD wollen nun sogar, dass der Nahverkehr in Dresden zusammengestrichen wird. </p>
+  </section>
+
+  <div class="nav-intro">
+  Ich ...
+  </div>
+    <!-- Navigation -->
+  <nav class="nav" aria-label="Page sections">
+    
+    <a href="#infos" class="nav-btn">... möchte mehr Informationen.</a>
+    <a href="#faq" class="nav-btn">... habe Fragen.</a>
+    <a href="#calltoaction" class="nav-btn">... möchte aktiv werden.</a>
+  </nav>
+
+  
+
+  <!-- Infos -->
+  <section class="section" id="infos">
+    <h2>Welche Kürzungen drohen</h2>
+    <p>
+      Folgende Kürzungen im Angebot unseres Nahverkehrs drohen:
+    </p>
+
+    <img src="kuerzungsplan_2027.svg" />
+
+    <ul>
+      <li>
+        Liste aller Kürzungen
+      </li>
+    </ul>
+    
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <h2>Häufige Fragen</h2>
+
+    <div class="faq-list" role="list">
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a1">
+          Was bringt mir der öffentliche Nahverkehr? Ich fahre doch eh nur Auto/Fahrrad.
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq-a1" role="region">
+          <p>
+            Das schöne am öffentlichen Nahverkehr ist, dass er allen was bringt – auch denjenigen, die ihn nicht nutzen: Weniger Stau, bessere Luft, weniger Flächenverbrauch<sup>1</sup> – davon haben alle was. Diese Vorteile kann der öffentliche Nahverkehr aber nur ausspielen, wenn er auch attraktiv gestaltet ist. Das heißt: hohe Takte & moderne Technologien.
+          </p>
+          <p>
+            Auch hat der öffentliche Nahverkehr eine wichtige soziale Funktion: Viele Menschen haben keinen Führerschein oder können aus gesundheitlichen Gründen nicht Auto oder Fahrrad fahren. Auch diese Menschen haben ein Recht auf unkomplizierte Mobilität – und diese bietet der öffentliche Nahverkehr im Städten am effizientesten. Alternative Ansätze – z.B. private Taxiunternehmen (ob autonom fahrend oder nicht) – sind insgesamt teurer, energie- und platzintensiver.
+          </p>
+          <p>
+            Derzeit nutzen übrigens über 50% - und damit die Mehrheit - der Dresdnerinnen und Dresdner den öffentlichen Nahverkehr regelmäßig.
+          </p> 
+          <div class="faq-footnotes">
+            <ol>
+              <li>Selbst eine nur zu 10% ausgelastete Straßenbahn ist immer noch 7 mal platzeffizienter als ein durchschnittlich besetztes Auto! (<a href="https://www.zukunft-mobilitaet.net/78246/analyse/flaechenbedarf-pkw-fahrrad-bus-strassenbahn-stadtbahn-fussgaenger-metro-bremsverzoegerung-vergleich/">Quelle</a>)</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a2">
+          Wo soll das Geld herkommen, um das Angebot bei Bus & Bahn zu erhalten? Wenn kein Geld mehr da ist, muss halt irgendwo gekürzt werden.
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq-a2" role="region">
+          <p>
+            Grundsätzlich wäre aus unserer Sicht genügend Geld vorhanden – die rechts-konservative Stadtratsmehrheit will jedoch andere Schwerpunkte setzen. Wir setzen uns daher für eine verstärkte Finanzierung des öffentlichen Nahverkehrs über den städtischen Haushalt ein.
+          </p>
+          <p>
+            Darüber hinaus gibt es Finanzierungsquellen, die aus unserer Sicht bisher nur unzureichend geprüft wurden: So z.B. die Einführung eines Gästetickets (bereits in der Sächsischen Schweiz etabliert), höhere Ausgleichszahlungen für das Bildungsticket durch den Freistaat Sachsen (gemäß Koaltionsvertrag von CDU & SPD), der konsequente Einsatz von Kombitickets bei Großveranstaltungen sowie einen höheren Beitrag der SachsenEnergie.
+          </p>
+          <p>
+            Übrigens: Investitionen in den öffentlichen Nahverkehr sind gut angelegtes Geld – jeder investierte Euro bringt der deutschen Volkswirtschaft das Dreifache zurück (<a href="https://mcube-cluster.de/mcube-consulting-studie-wertschoepfung-oepnv/">Quelle</a>): Durch mehr Arbeitsplätze & Wertschöpfung, weniger Flächenverbrauch, weniger Unfälle und geringeren Autoverkehr. Hier zu kürzen wäre also nicht nur schlecht für unsere Mobilität – sondern auch für unsere Wirtschaft.
+          </p> 
+          <p>
+            Davon unabhängig gibt es auch auf der Ausgabenseite Potentiale, die bisher nicht genutzt werden: Die Erhöhung der Reisegeschwindigkeit von Bus & Bahn durch entsprechende Bevorrechtigungen an Ampeln sowie eigene Fahrstreifen kann Kosten sparen, da dann weniger Fahrzeuge für den gleichen Takt eingesetzt werden müssen. Jedoch scheitert die konkrete Umsetzung meist an der rechts-konservativen Stadtratsmehrheit.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a3">
+          Warum sollten die Bürgerinnen und Bürger einspringen, wenn die DVB nicht gut wirtschaftet?/"Die DVB arbeiten nicht kosteneffizient"
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq-a3" role="region">
+          <p>
+            Die aktuelle finanzielle Lage der DVB ist nicht auf das unternehmerische Handeln der DVB zurückzuführen. Die allgemeine Preisentwicklung der Energie-, Personal- und Materialpreise aufgrund der Corona-Pandemie sowie den Angriff Russlands auf die Ukraine haben die DVB, wie alle Unternehmen, hart getroffen. Dabei arbeiten die DVB nicht weniger effizient als andere Verkehrsunternehmen. Z.B. ist die Fahrzeugauslastung im deutschlandweiten Vergleich sehr hoch. Auch wurden bereits bedeutende interne Einsparungen vorgenommen, die jedoch häufig auch mit einer Angebotsverschlechterung einhergehen: Seltenere Reinigungen, weniger Ersatzpersonal bei Ausfällen etc. Damit leistet das Unternehmen bereits einen bedeutenden Anteil bei der Senkung der Kosten.
+          </p>
+          <p>
+            Grundsätzlich ist der öffentliche Nahverkehr jedoch schon immer – wie jede öffentliche Transportinfrastruktur, wie z.B. auch der Autoverkehr – ein Zuschussgeschäft.<sup>1</sup> Allerdings eins, dass sich volkswirtschaftlich lohnt: Jeder investierte Euro bringt der deutschen Volkswirtschaft das Dreifache zurück (<a href="https://mcube-cluster.de/mcube-consulting-studie-wertschoepfung-oepnv/">Quelle</a>): Durch mehr Arbeitsplätze & Wertschöpfung, weniger Flächenverbrauch, weniger Unfälle und geringeren Autoverkehr.
+          </p>
+          <p>
+            Neben der Tatsache, dass der öffentliche Nahverkehr Teil der allgemeinen Daseinsvorsorge ist, bringt er der Gesellschaft auch echte Gewinne –  ähnlich wie Schulen, das Straßennetz oder unser Gesundheitssystem. 
+          </p> 
+          <div class="faq-footnotes">
+            <ol>
+              <li>Die Gesamtkosten des Autoverkehrs übersteigen die Einnahmen der KFZ-Steuer (<a href="https://www.das-parlament.de/wirtschaft/verkehr/experten-raten-zur-einfuehrung-einer-pkw-maut">Quelle</a>).</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a4">
+          Gibt es nicht auch durchaus angebrachte Kürzungen? Wenn ich leere Busse/Bahnen fahren sehe, denke ich mir schon, dass sich da sparen lässt.
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq-a4" role="region">
+          <p>
+            Etwas leerere Busse & Bahnen sind vor allem in den Randbereichen der Stadt sowie während der Nacht durchaus zu beobachten. Dort zu kürzen wäre allerdings zu kurz gedacht: Das Angebot im Randbereich sowie den Randzeiten erfüllt eine wichtige Zubringerfunktion. Wird das Angebot dort zu unattraktiv – würde man also seltener fahren – geht das mit Fahrgastverlusten einher. Das zeigt z.B. die letztes Jahr in Kraft getretene Kürzung der Linie 7 nach Pennrich. Dort wurde der Takt mit eben dieser Argumentation von 10 Minuten auf 20 Minuten verschlechtert. Das Resultat sind 30% weniger Fahrgäste. Diese sind nun auf Alternativen umgestiegen und belasten unser Verkehrsnetz an anderer Stelle. Das zeigt, dass ein attraktives Angebot wichtig ist, damit der Nahverkehr tatsächlich als <b>verlässliche</b> Alternative zum Auto angenommen wird – auch und gerade auf den Zubringerstrecken. 
+          </p>
+          <p>
+            Im Übrigen ist selbst eine nur zu 10% ausgelastete Straßenbahn immer noch 7 mal platzeffizienter als ein durchschnittlich besetztes Auto!<sup>1</sup> Ebenso reichen bereits 24 Fahrgäste, damit eine Straßenbahn energieeffizienter als ein effizientes Elektroauto unterwegs ist.<sup>2</sup>
+          </p>
+          <p>
+            Darüber hinaus wurde bereits im letzten Jahr gekürzt & gespart: Neben der bereits erwähnten Kürzung im Angebot der Linie 7 kam es darüber hinaus zu Kürzungen bei den Linien 74, 76, 87 und 88 sowie zur Einführung eines Ferienfahrplans in den Winter- Oster- und Herbstferien. Diese Maßnahmen sehen wir bereits sehr kritisch, da sie das Angebot unattraktiver sowie weniger verlässlich machen. 
+          </p> 
+          <p>
+            Kürzungen gehen immer mit Fahrgastverlusten und somit sinkenden Einnahmen einher. Fast die Hälfte der Dresdnerinnen und Dresdner besitzen eine DVB-Zeitkarte – sie sind die wichtigste Einnahmebasis. Diese Quote ist auch deswegen so hoch, da das Angebot derzeit noch als attraktiv und zuverlässig wahrgenommen wird, wie das Kundenbarometer regelmäßig zeigt. Ist das nicht mehr der Fall, wird die Anzahl der Zeitkarten zurückgehen, die Einnahmen sinken und es droht ein Teufelskreis.
+          </p>
+          <div class="faq-footnotes">
+            <ol>
+              <li><a href="https://www.zukunft-mobilitaet.net/78246/analyse/flaechenbedarf-pkw-fahrrad-bus-strassenbahn-stadtbahn-fussgaenger-metro-bremsverzoegerung-vergleich/">Quelle</a></li>
+              <li>
+                Beim Vergleich mit einem Verbrenner reichen sogar 7 Personen. Quelle: <a href="https://www.dnn.de/lokales/dresden/dvb-dresden-stromverbrauch-der-strassenbahnen-so-niedrig-wie-noch-nie-Y52FZJZSHVDBVHNT3IOKYAOPFU.html">Energiebedarf Straßenbahn</a>, angenommene Werte E-Auto: 0,15 kWh/km; Verbrenner: 0,5 kWh/km.
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a5">
+          Warum werden neue Wartehäuschen gebaut, obwohl kein Geld da ist?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq-a5" role="region">
+          <p>
+            Die Wartehäuschen gehören nicht der DVB und werden auch nicht durch diese finanziert. Stattdessen vergibt die Stadt Dresden den Betrieb dieser an einen privaten Werbeanbieter. Dieser baut auch die neuen Wartehäuschen. Der DVB entstehen durch die neuen Wartehäuschen keine Kosten.
+          </p>
+          <p>
+            Die bisherigen Verträge stammen aus den 90er Jahren und wurden mehrfach verlängert. Die Anzahl der Wartehäuschen gemäß diesem Vertrag war ausgeschöpft und hätte nur durch einen vergleichsweise kostenintensiven Kauf seitens der DVB oder der Stadt Dresden aufgestockt werden können. Daher wurde sich stattdessen für eine Neuausschreibung entschieden. Dadurch können auch an Haltestellen Wartehäuschen entstehen, die bisher keine hatten.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a6">
+          Warum werden für viel Geld teure Straßenbahnen & Busse gekauft, obwohl kein Geld da ist?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq-a6" role="region">
+          <p>
+            Die ältesten Straßenbahnen sind fast 30 Jahre alt und haben ihre ursprünglich geplante Laufleistung weit überschritten. Ersatzteile sind nicht mehr zu bekommen. Um das Angebot erhalten zu können, müssen daher neue Bahnen angeschafft werden. Ähnliches gilt für die Busflotte. Es werden keine Bahnen & Busse neu gekauft, wenn es nicht notwendig zum Erhalt des Angebots wäre.
+          </p>
+          <p>
+            Darüber hinaus muss die Busflotte entsprechend gesetzlicher Vorgaben schrittweise auf einen emissionsfreien Antrieb umgestellt werden. Daher handelt es sich bei neuen Bussen in der Regel um Elektrofahrzeuge, da diese derzeit die wirtschaftlichsten emissionsfreien Fahrzeuge sind.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a7">
+          Selbst wenn unbedingt neue Straßenbahnen & Busse gekauft werden müssen, geht es nicht auch günstiger? Muss es immer das Beste vom Besten sein? 
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq-a7" role="region">
+          <p>
+            Die Beschaffung von Fahrzeugen erfolgt durch Ausschreibungen am Markt. Diese Ausschreibungen enthalten keine unüblichen Anforderungen im Vergleich zu anderen Städten. Von den eingegangenen Angeboten wird das wirtschaftlichste Angebot ausgewählt. Die unter anderem von Holger Zastrow aufgestellte Behauptung, unübliche Anforderungen an die Fahrzeuge würden die Kosten nach oben treiben, ist also falsch.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a8">
+          Und warum der Umbau auf größere Gleisabstände? Das kostet doch alles Geld.
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq-a8" role="region">
+          <p>
+            Der Umbau auf den größeren Gleisabstand wird bereits seit den 90er Jahren verfolgt. Es gibt keine Baumaßnahmen, die nur der Herstellung der größeren Gleisabstände dienen. Der Umbau erfolgt immer dann, wenn sowieso eine Sanierung eines Streckenabschnitts notwendig ist. Wenn nur kleinere oder kurzfristige Instandsetzungsmaßnahmen notwendig sind, erfolgt keine Aufweitung – so z.B. geschehen bei der Baumaßnahme auf der Blasewitzer Str./Loschwitzer Str. Zusätzliche Kosten entstehen also praktisch nicht.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a9">
+          Ist das Deutschlandticket nicht eigentlich die Ursache für die aktuellen Finanzierungsprobleme? Da seid ihr Grüne doch selbst schuld dran!
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq-a9" role="region">
+          <p>
+            Das Deutschlandticket ist nicht der alleinige Verursacher der finanziellen Probleme. Auch die allgemeine Preisentwicklung von Energie und Material, vor allem bedingt durch die Corona-Pandemie und den russischen Angriffskrieg auf die Ukraine, sorgen für die Finanzierungsprobleme. Dazu kommen fehlende Ausgleichszahlungen des Freistaats Sachsens, z.B. beim Bildungsticket, die die Situation verschärfen. Wir setzen uns daher grundsätzlich für eine bessere Finanzierung des öffentlichen Nahverkehrs ein, die auch das Deutschlandticket besser untersetzt.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    
+  </section>
+
+  <!-- Call To Action -->
+  <section class="section" id="calltoaction">
+    <h2>Was du tun kannst</h2>
+    <p>
+      TODO: Kontaktadresse (online/offline) relevante Stadtratsfraktion, ggf. textbausteine
+    </p>
+  </section>
+
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <a href="https://gruenedresden.de/meta-navigation/top/kontakt">Kontakt</a>
+    <a href="https://gruenedresden.de/meta-navigation/top/impressum">Impressum</a>
+    <a href="https://gruenedresden.de/meta-navigation/top/datenschutz">Datenschutz</a>
+  </footer>
+
+</div>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      const answerId = btn.getAttribute('aria-controls');
+      const answer = document.getElementById(answerId);
+
+      // Close all others
+      document.querySelectorAll('.faq-question').forEach(other => {
+        if (other !== btn) {
+          other.setAttribute('aria-expanded', 'false');
+          const otherId = other.getAttribute('aria-controls');
+          document.getElementById(otherId).classList.remove('open');
+        }
+      });
+
+      // Toggle current
+      btn.setAttribute('aria-expanded', String(!expanded));
+      answer.classList.toggle('open', !expanded);
+    });
+  });
+
+  // Smooth highlight on nav click
+  document.querySelectorAll('.nav-btn').forEach(link => {
+    link.addEventListener('click', function() {
+      this.style.background = 'var(--lime)';
+      this.style.borderColor = 'var(--lime)';
+      this.style.color = 'var(--black)';
+      setTimeout(() => {
+        this.style.background = '';
+        this.style.borderColor = '';
+        this.style.color = '';
+      }, 600);
+    });
+  });
+</script>
+
+</body>
+</html>
