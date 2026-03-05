@@ -139,6 +139,16 @@
       line-height: 1;
     }
 
+    .section-heading h2, .back {
+      display: inline;
+      vertical-align: top;
+    }
+
+    .back {
+      font-size: 1.5rem;
+      float: right;
+    }
+
     /* ── Sections ── */
     .section {
       padding: 2.5rem 2.5rem 2rem;
@@ -280,7 +290,7 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container" id="top">
 
   <!-- Header -->
   <header class="site-header">
@@ -307,7 +317,10 @@
 
   <!-- Infos -->
   <section class="section" id="infos">
-    <h2>Welche Kürzungen drohen</h2>
+    <div class="section-heading">
+      <h2>Welche Kürzungen drohen</h2>
+      <a href="#top" class="back">↑</a>
+    </div>
     <p>
       Folgende Kürzungen im Angebot unseres Nahverkehrs drohen:
     </p>
@@ -324,7 +337,10 @@
 
   <!-- FAQ -->
   <section class="section" id="faq">
-    <h2>Häufige Fragen</h2>
+    <div class="section-heading">
+      <h2>Häufige Fragen</h2> 
+      <a href="#top" class="back">↑</a>
+    </div>
 
     <div class="faq-list" role="list">
 
@@ -497,7 +513,11 @@
 
   <!-- Call To Action -->
   <section class="section" id="calltoaction">
-    <h2>Was du tun kannst</h2>
+    <div class="section-heading">
+      <h2>Was du tun kannst</h2>
+      <a href="#top" class="back">↑</a>
+    </div>
+    
     <p>
       TODO: Kontaktadresse (online/offline) relevante Stadtratsfraktion, ggf. textbausteine
     </p>
