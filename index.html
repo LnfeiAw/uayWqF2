@@ -126,6 +126,7 @@
       transition: background 0.18s, color 0.18s, transform 0.12s;
       white-space: nowrap;
     }
+  
     .nav-btn:hover {
       background: var(--pink);
       border-color: var(--pink);
@@ -133,7 +134,12 @@
       transform: translateY(-2px);
     }
     .nav-btn:active { transform: translateY(0); }
-
+    .nav-btn:focus {
+      background: var(--pink);
+      border-color: var(--pink);
+      color: #fff;
+      transform: translateY(-2px);
+    }
     .nav-btn .icon {
       font-size: 1rem;
       line-height: 1;
@@ -520,6 +526,9 @@
     
     <p>
       TODO: Kontaktadresse (online/offline) relevante Stadtratsfraktion, ggf. textbausteine
+    </p>
+    <p>
+      Umleitungsschild zum selbst ausdrucken und aufhängen als Aktionsmöglichkeit
     </p>
   </section>
 
